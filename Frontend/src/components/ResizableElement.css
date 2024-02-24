@@ -1,0 +1,32 @@
+.element1 {
+    position: absolute;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    left: 20px;
+    top:  20px;
+    width: 48%;
+    height: 400px;
+    border-radius: 5px;
+  }
+.element2 {
+    position: absolute;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    right: 20px;
+    top:  20px;
+    width: 48%;
+    height: 400px;
+    border-radius: 5px;
+  }
+  .element3 {
+    position: absolute;
+    background-color: #f1f1f1;
+    border: 1px solid #d3d3d3;
+    /* left: 540px; */
+    top:  440px;
+    left: 20px;
+    right: 20px;
+    width: 97%;
+    height: 400px;
+    border-radius: 5px;
+  }
