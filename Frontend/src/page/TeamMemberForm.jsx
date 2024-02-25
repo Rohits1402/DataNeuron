@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useAuth } from "../AuthContext";
 import axios from "axios";
+
+/**
+ * Component for adding/editing team member details.
+ * Renders a form for adding/editing team member information.
+ * returns JSX element displaying the form for adding/editing team member details.
+ */
 const TeamMemberForm = () => {
   const {
     setTeamMembers,
@@ -8,11 +14,15 @@ const TeamMemberForm = () => {
     setUpdateTeamMember,
     setApiCountData,
   } = useAuth();
+
+  // State to store form data
   const [formData, setFormData] = useState({
     name: "",
     skills: "",
     contactNumber: "",
   });
+
+  // Effect hook to set form data when updateTeamMember changes
   useEffect(() => {
     setFormData(
       updateTeamMember
@@ -25,19 +35,20 @@ const TeamMemberForm = () => {
     );
   }, [updateTeamMember]);
 
+  // Function to handle input change in the form fields
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     setFormData({ name: "", skills: "", contactNumber: "" });
-    console.log(formData);
 
     try {
-      let url = "http://localhost:8000/team/submit";
+      let url = "https://dataneuron-jarm.onrender.com/team/submit";
       if (updateTeamMember) {
-        url = "http://localhost:8000/team/update";
+        url = "https://dataneuron-jarm.onrender.com/team/update";
         let payload = {
           ...updateTeamMember,
           ...formData,
@@ -45,32 +56,22 @@ const TeamMemberForm = () => {
         const response = await axios.put(url, payload);
         setApiCountData(response.data.count);
         setUpdateTeamMember(null);
-        setFormData({
-          name: "",
-          skills: "",
-          contactNumber: "",
-        });
       } else {
         const response = await axios.post(url, formData);
         setApiCountData(response.data.count);
-        setFormData({
-          name: "",
-          skills: "",
-          contactNumber: "",
-        });
       }
-      // console.log("Success:", response.data);
-      const responsedata = await fetch("localhost:8000/team/getTeamMember");
-      const data = await responsedata.json();
+
+      const responseData = await fetch(
+        "https://dataneuron-jarm.onrender.com/team/getTeamMember"
+      );
+      const data = await responseData.json();
       setTeamMembers(data.teamMembers);
       setApiCountData(data.count);
-      // You can handle success, e.g., show a success message or redirect the user
     } catch (error) {
       console.error(
         "Error:",
         error.response ? error.response.data : error.message
       );
-      // You can handle errors, e.g., show an error message to the user
     }
   };
 

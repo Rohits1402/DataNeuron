@@ -2,15 +2,20 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./form.css"; // Import your CSS file
 
+/**
+ * Component for user signup form.
+ *  setRegistered - Function to set the registration status.
+ * returns JSX element displaying the signup form.
+ */
 export const Signup = ({ setRegistered }) => {
-  const [FullName, setFullName] = useState("");
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
-  const apiUrl = "http://localhost:8000/user/register";
+  const apiUrl = "https://dataneuron-jarm.onrender.com/user/register";
 
   const formData = {
-    name: FullName,
+    name: fullName,
     email,
     password,
     username,
@@ -18,13 +23,9 @@ export const Signup = ({ setRegistered }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission logic (can include authentication API calls)
-    console.log(formData);
     try {
       const response = await axios.post(apiUrl, formData);
-      console.log("Response:", response.data);
-      if (response.status == 200) {
-        console.log("response.status: ", response.status);
+      if (response.status === 200) {
         setRegistered(false);
       }
     } catch (error) {
@@ -43,7 +44,7 @@ export const Signup = ({ setRegistered }) => {
         <input
           placeholder="Name"
           type="text"
-          value={FullName}
+          value={fullName}
           onChange={(e) => setFullName(e.target.value)}
           required
         />
@@ -73,7 +74,7 @@ export const Signup = ({ setRegistered }) => {
         />
         <button type="submit">Signup</button>
       </form>
-      <p onClick={() => setRegistered(false)}>{`Go to Login`}</p>
+      <p onClick={() => setRegistered(false)}>Go to Login</p>
     </div>
   );
 };
