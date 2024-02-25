@@ -1,47 +1,67 @@
 .auth-form-container {
-    max-width: 400px;
-    margin: auto;
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  }
-  
-  form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  label {
-    margin-bottom: 6px;
-  }
-  
-  input {
-    margin-bottom: 10px;
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  button {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  button:hover {
-    background-color: #45a049;
-  }
-  
-  p {
-    margin-top: 10px;
-    cursor: pointer;
-    color: #007bff;
-  }
-  
-  p:hover {
-    text-decoration: underline;
-  }
-  
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #eef0f1; /* Light colored background */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.auth-form-container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-form-container label {
+  margin-bottom: 5px;
+}
+
+.auth-form-container input[type="text"],
+.auth-form-container input[type="email"],
+.auth-form-container input[type="password"] {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out; /* Add transition effect */
+}
+
+.auth-form-container input[type="text"]:focus,
+.auth-form-container input[type="email"]:focus,
+.auth-form-container input[type="password"]:focus {
+  border-color: #007bff; /* Change border color when focused */
+}
+
+.auth-form-container button {
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.auth-form-container button:hover {
+  background-color: #0056b3;
+}
+
+.auth-form-container p {
+  text-align: center;
+  margin-top: 10px;
+  cursor: pointer;
+  color: #007bff;
+}
+
+.auth-form-container p:hover {
+  text-decoration: underline;
+}
+
+.auth-form-container p.error-message {
+  color: red;
+  margin-top: 5px;
+}
