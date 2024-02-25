@@ -45,12 +45,14 @@ export const Login = ({ setRegistered }) => {
         <label>Username:</label>
         <input
           type="text"
+          placeholder="Username"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
         <label>Password:</label>
         <input
+          placeholder="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -61,7 +63,7 @@ export const Login = ({ setRegistered }) => {
       <p style={{ color: "red" }}>
         {responseStatus == 200 ? "Wrong credential" : ""}
       </p>
-      <p onClick={() => setRegistered(true)}>{`Not a user "Register"`}</p>
+      <p onClick={() => setRegistered(true)}>{`Go to SignUp`}</p>
     </div>
   );
 };

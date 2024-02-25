@@ -75,11 +75,7 @@ const TeamMemberForm = () => {
   };
 
   return (
-    <form
-      className="team-member-form"
-      style={formStyles}
-      onSubmit={handleSubmit}
-    >
+    <form className="team-member-form" onSubmit={handleSubmit}>
       <label className="form-label" htmlFor="name">
         Name:
       </label>
@@ -91,7 +87,6 @@ const TeamMemberForm = () => {
         value={formData.name}
         onChange={handleInputChange}
         required
-        style={inputStyles}
       />
 
       <label className="form-label" htmlFor="skills">
@@ -105,7 +100,6 @@ const TeamMemberForm = () => {
         value={formData.skills}
         onChange={handleInputChange}
         required
-        style={inputStyles}
       />
 
       <label className="form-label" htmlFor="contactNumber">
@@ -121,43 +115,13 @@ const TeamMemberForm = () => {
         placeholder="Enter 10-digit number"
         onChange={handleInputChange}
         required
-        style={inputStyles}
       />
 
-      <button className="form-button" type="submit" style={buttonStyles}>
+      <button className="form-button" type="submit">
         {updateTeamMember ? "Update Team Member" : "Add new team member"}
       </button>
     </form>
   );
-};
-
-// Styles
-const formStyles = {
-  backgroundColor: "#fff",
-  padding: "20px",
-  borderRadius: "8px",
-  maxWidth: "400px",
-  boxShadow: "0 0 10px rgba(0, 0, 0, 0.1)",
-  width: "80%",
-  overflowY: "auto",
-  maxHeight: "80vh",
-};
-
-const inputStyles = {
-  width: "100%",
-  padding: "8px",
-  marginBottom: "16px",
-  boxSizing: "border-box",
-};
-
-const buttonStyles = {
-  backgroundColor: "#4caf50",
-  color: "#fff",
-  padding: "10px",
-  border: "none",
-  borderRadius: "4px",
-  cursor: "pointer",
-  width: "100%",
 };
 
 export default TeamMemberForm;

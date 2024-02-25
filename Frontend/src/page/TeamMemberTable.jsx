@@ -27,7 +27,9 @@ const TeamMemberTable = () => {
   };
   return (
     <div className="team-member-table">
-      <h2 className="team-member-table-title">Team Member Details</h2>
+      <h2 className="team-member-table-title">
+        Team Member Details : (Refresh after you Update)
+      </h2>
       <table className="team-member-table-wrapper">
         <thead>
           <tr>

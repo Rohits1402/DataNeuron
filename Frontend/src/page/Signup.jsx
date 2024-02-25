@@ -39,8 +39,9 @@ export const Signup = ({ setRegistered }) => {
     <div className="auth-form-container">
       <h2>Signup</h2>
       <form onSubmit={handleSubmit}>
-        <label>FullName:</label>
+        <label>Full Name:</label>
         <input
+          placeholder="Name"
           type="text"
           value={FullName}
           onChange={(e) => setFullName(e.target.value)}
@@ -48,13 +49,15 @@ export const Signup = ({ setRegistered }) => {
         />
         <label>Email:</label>
         <input
+          placeholder="Email"
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
         />
-        <label>username:</label>
+        <label>Username:</label>
         <input
+          placeholder="Username"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
@@ -62,6 +65,7 @@ export const Signup = ({ setRegistered }) => {
         />
         <label>Password:</label>
         <input
+          placeholder="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
@@ -69,7 +73,7 @@ export const Signup = ({ setRegistered }) => {
         />
         <button type="submit">Signup</button>
       </form>
-      <p onClick={() => setRegistered(false)}>{`if already a user "login"`}</p>
+      <p onClick={() => setRegistered(false)}>{`Go to Login`}</p>
     </div>
   );
 };
