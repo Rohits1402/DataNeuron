@@ -39,10 +39,18 @@ export const ResizableElement = () => {
         )}
       </div>
       <div ref={element2Ref} className="element2">
-        {token ? <TeamMemberForm /> : <h3>Please login.</h3>}
+        {token ? (
+          <TeamMemberForm />
+        ) : (
+          <h3 className="idle-text">Please login.</h3>
+        )}
       </div>
       <div ref={element3Ref} className="element3">
-        {token ? <TeamMemberTable /> : <h3>Please login</h3>}
+        {token ? (
+          <TeamMemberTable />
+        ) : (
+          <h3 className="idle-text">Please login</h3>
+        )}
       </div>
     </div>
   );

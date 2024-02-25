@@ -27,23 +27,37 @@ const TeamMemberTable = () => {
   };
   return (
     <div className="team-member-table">
-      <h2>Team Member Details</h2>
-      <table className="table" style={tableStyles}>
+      <h2 className="team-member-table-title">Team Member Details</h2>
+      <table className="team-member-table-wrapper">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Skills</th>
-            <th>Contact Number</th>
+            <th className="team-member-table-header">Name</th>
+            <th className="team-member-table-header">Skills</th>
+            <th className="team-member-table-header">Contact Number</th>
           </tr>
         </thead>
         <tbody>
-          {teamMembers.map((member) => (
-            <tr key={member.id}>
-              <td>{member.name}</td>
-              <td>{member.skills}</td>
-              <td>{member.contactNumber}</td>
-              <td onClick={() => handleUpdate(member)}>
-                <button>Update</button>
+          {teamMembers.map((member, index) => (
+            <tr
+              key={member.id}
+              className={
+                index % 2 === 0
+                  ? "team-member-table-row-even"
+                  : "team-member-table-row"
+              }
+            >
+              <td className="team-member-table-entry">{member.name}</td>
+              <td className="team-member-table-entry">{member.skills}</td>
+              <td className="team-member-table-entry">
+                {member.contactNumber}
+              </td>
+              <td>
+                <button
+                  className="team-member-table-button"
+                  onClick={() => handleUpdate(member)}
+                >
+                  Update
+                </button>
               </td>
             </tr>
           ))}

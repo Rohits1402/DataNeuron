@@ -31,9 +31,7 @@
   border-radius: 5px;
 }
 
-.element1 h3,
-.element2 h3,
-.element3 h3 {
+.idle-text {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -63,4 +61,96 @@
   border-radius: 5px;
   background-color: #f9f9f9;
   z-index: 1000; /* Ensure the login panel is above the overlay */
+}
+
+.user-details-container {
+  padding: 20px;
+}
+
+.api-count {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.user-info {
+  margin-bottom: 20px;
+}
+
+.user-info-item {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #0056b3;
+}
+
+/* Team Member Table Container */
+.team-member-table {
+  padding: 20px;
+}
+
+/* Heading */
+.team-member-table-title {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* Table */
+.team-member-table-wrapper {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+/* Table Header */
+.team-member-table-header {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+/* Table Row - Even */
+.team-member-table-row-even {
+  background-color: #f9f9f9;
+}
+
+/* Table Row - Hover */
+.team-member-table-row:hover {
+  background-color: #f2f2f2;
+}
+
+/* Button */
+.team-member-table-button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+/* Button Hover */
+.team-member-table-button:hover {
+  background-color: #0056b3;
+}
+.team-member-table-header {
+  background-color: #f2f2f2;
+  font-weight: bold;
+  text-align: center; /* Center align the heading */
+  padding: 10px; /* Add some padding */
+}
+
+.team-member-table-entry {
+  background-color: #f2f2f2;
+  text-align: center; /* Center align the heading */
+  padding: 10px; /* Add some padding */
 }

@@ -1,11 +1,11 @@
 import "./App.css";
-import { ResizableElement } from "./components/Resuebale";
+import { ResizableElement } from "./components/Resizable";
 // import ResizableLayout from "./components/ResizableLayout";
 
 function App() {
   return (
     <div className="App">
-      <ResizableElement/>
+      <ResizableElement />
     </div>
   );
 }
