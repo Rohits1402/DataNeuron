@@ -1,23 +1,28 @@
 const { apiCountModel } = require("../Modal/apiCount.model.js");
 
+/**
+ * Middleware to track the count of API calls.
+ */
 const apiCount = async (req, res, next) => {
   try {
+    // Find the API count data
     let apiData = await apiCountModel.findOne();
+
+    // If data exists, increment the count, otherwise create a new entry
     if (apiData) {
-      // If data exists, then increment the count
       apiData.count++;
       await apiCountModel.findByIdAndUpdate(apiData._id, {
         count: apiData.count,
       });
     } else {
-      // If no data exists, we create a new entry with count initialized to 1
       await apiCountModel.create({ count: 1 });
     }
-    // Attaching the count to the request body
+
+    // Attach the count to the request body
     req.body.count = apiData ? apiData.count : 1;
     next();
   } catch (error) {
-    console.log(error);
+    console.error("Error in apiCount middleware:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 };
