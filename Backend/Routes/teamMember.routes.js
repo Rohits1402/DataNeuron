@@ -1,11 +1,13 @@
-const express = require('express');
+const express = require("express");
 const teamMemberRouter = express.Router(); // Use express.Router() directly
-const TeamMember = require('../Modal/teamMember.model');
+const TeamMember = require("../Modal/teamMember.model");
+const { apiCount } = require("../Middleware/apiCount");
 
-teamMemberRouter.post('/submit', async (req, res) => {
+// Add team member (with API count middleware)
+teamMemberRouter.post("/submit", apiCount, async (req, res) => {
   try {
     const { name, skills, contactNumber } = req.body;
-    console.log('req.body: ', req.body);
+    console.log("req.body: ", req.body);
 
     // Create a new TeamMember document using the submitted data
     const newTeamMember = new TeamMember({
@@ -14,29 +16,36 @@ teamMemberRouter.post('/submit', async (req, res) => {
       contactNumber,
     });
 
-    // Save the new team member to the database
+    // Save the new team member to the databases
     await newTeamMember.save();
 
-    res.status(200).json({ message: 'Form data submitted successfully',count: req.body.count });
+    res.status(200).json({
+      message: "Form data submitted successfully",
+      count: req.body.count,
+    });
   } catch (error) {
-    console.error('Error:', error.message);
-    res.status(500).send({ message: 'Internal Server Error',count: req.body.count });
+    console.error("Error:", error.message);
+    res
+      .status(500)
+      .send({ message: "Internal Server Error", count: req.body.count });
   }
 });
 
-
-teamMemberRouter.get('/getTeamMember', async (req, res) => {
+teamMemberRouter.get("/getTeamMember", async (req, res) => {
   try {
     const teamMembers = await TeamMember.find();
-    console.log('teamMembers: ', teamMembers);
-    res.json({ teamMembers,count: req.body.count });
+    console.log("teamMembers: ", teamMembers);
+    res.json({ teamMembers, count: req.body.count });
   } catch (error) {
-    console.error('Error:', error.message);
-    res.status(500).send({ message: 'Internal Server Error',count: req.body.count });
+    console.error("Error:", error.message);
+    res
+      .status(500)
+      .send({ message: "Internal Server Error", count: req.body.count });
   }
-})
+});
 
-teamMemberRouter.put('/update', async (req, res) => {
+// Update team member (with API count middleware)
+teamMemberRouter.put("/update", apiCount, async (req, res) => {
   try {
     const memberId = req.body._id;
     const { name, skills, contactNumber } = req.body;
@@ -52,18 +61,22 @@ teamMemberRouter.put('/update', async (req, res) => {
     );
 
     if (!updatedTeamMember) {
-      return res.status(404).json({ message: 'Team member not found', count: req.body.count });
+      return res
+        .status(404)
+        .json({ message: "Team member not found", count: req.body.count });
     }
 
-    res.status(200).json({ message: 'Team member updated successfully', updatedTeamMember, count: req.body.count });
+    res.status(200).json({
+      message: "Team member updated successfully",
+      updatedTeamMember,
+      count: req.body.count,
+    });
   } catch (error) {
-    console.error('Error:', error.message);
-    res.status(500).send({ message: 'Internal Server Error' , count: req.body.count});
+    console.error("Error:", error.message);
+    res
+      .status(500)
+      .send({ message: "Internal Server Error", count: req.body.count });
   }
 });
-
-
-
-
 
 module.exports = teamMemberRouter;

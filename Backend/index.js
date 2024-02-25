@@ -8,12 +8,11 @@ require("dotenv").config();
 const app = express();
 app.use(express.json());
 app.use(cors());
-app.use(apiCount);
 app.get("/", function (req, res) {
   res.status(200).send({ msg: "Welcome to HomePage", count: req.body.count });
 });
 app.use("/user", userController);
-app.use("/team", teamMemberRouter);
+app.use("/team", apiCount, teamMemberRouter);
 
 const PORT = process.env.PORT || 8000;
 app.listen(PORT, async () => {
